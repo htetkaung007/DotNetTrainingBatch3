@@ -1,37 +1,20 @@
-﻿// See https://aka.ms/new-console-template for more information
-using System.Data;
-using System.Data.SqlClient;
-
-Console.WriteLine("Hello, World!");
-
-
+﻿
 //Cltrl +k +c --> Enable comment
-//Ctrl + K + UInt128 --> Disavle 
+//Ctrl + K + UInt128 --> Disable 
 //Break point --> F9
 //Stop --> shift + F5
 
-SqlConnectionStringBuilder sqlConnectionStringBuilder = new SqlConnectionStringBuilder();
-sqlConnectionStringBuilder.DataSource = ".";//sever name
-sqlConnectionStringBuilder.InitialCatalog = "TestDB";//table name
-sqlConnectionStringBuilder.UserID = "sa";
-sqlConnectionStringBuilder.Password = "sasa@123";
+//connect data base
+using DotNetTrainingBatch3.ConsoleApp.AdoDotNetExamples;
+using System.Data;
+using System.Data.SqlClient;
 
-string query = "select * from tbl_blog";
-SqlConnection sqlConnection = new SqlConnection(sqlConnectionStringBuilder.ConnectionString);
-sqlConnection.Open();
-SqlCommand cmd = new SqlCommand(query, sqlConnection);
-SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-DataTable dt = new DataTable();
-adapter.Fill(dt);
+Console.WriteLine("Hello World of C#");
 
-foreach (DataRow dr in dt.Rows)
-{
-    Console.WriteLine(dr["BlogId"]);
-    Console.WriteLine(dr["BlogTitle"]);
-    Console.WriteLine(dr["BlogAuthor"]);
-    Console.WriteLine(dr["BlogContent"]);
-   
-}
-sqlConnection.Close();
-//Console.ReadLine();
-Console.ReadKey();
+AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
+//adoDotNetExample.Read();
+//adoDotNetExample.Edit(id:3 ) ;
+//adoDotNetExample.Edit(id:12) ;
+//oDotNetExample.Create(title: "The girl", author: "By NNA", content: "HaHa");
+adoDotNetExample.Update(id: 5, title: "hay", author: "me", content: "hello");
+Console.ReadLine();
