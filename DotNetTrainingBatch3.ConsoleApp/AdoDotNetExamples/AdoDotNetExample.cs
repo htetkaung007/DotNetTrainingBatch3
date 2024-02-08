@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace DotNetTrainingBatch3.ConsoleApp.AdoDotNetExamples
 {
+    #region ADO.net CRUD
     public class AdoDotNetExample
     {
         public void Read()
@@ -176,5 +177,30 @@ namespace DotNetTrainingBatch3.ConsoleApp.AdoDotNetExamples
             #endregion
 
         }
+        public void Delete(int id)
+        {
+            #region delete
+            //Sever Connect
+            SqlConnectionStringBuilder sqlConnectionStringBuilder = new SqlConnectionStringBuilder();
+            sqlConnectionStringBuilder.DataSource = "DESKTOP-BMOLS6N";//sever name
+            sqlConnectionStringBuilder.InitialCatalog = "TestDb";//Data Base Name
+            sqlConnectionStringBuilder.UserID = "sa";
+            sqlConnectionStringBuilder.Password = "sasa@123";
+
+            SqlConnection connection = new SqlConnection(sqlConnectionStringBuilder.ConnectionString);
+            connection.Open();//open connection
+
+            string query = @"DELETE FROM [dbo].[Tb_Blog]
+      WHERE BlogId = @BlogId";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@BlogId", id);
+
+            int result = cmd.ExecuteNonQuery();
+            connection.Close();//close connect
+            string massage = result > 0 ? "Delete sucefully" : "Delete failed";
+            #endregion
+        }
     }
-    }
+    #endregion
+}

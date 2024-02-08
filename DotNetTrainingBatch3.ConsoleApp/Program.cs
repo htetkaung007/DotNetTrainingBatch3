@@ -6,15 +6,31 @@
 
 //connect data base
 using DotNetTrainingBatch3.ConsoleApp.AdoDotNetExamples;
+using DotNetTrainingBatch3.ConsoleApp.DapperExamples;
 using System.Data;
 using System.Data.SqlClient;
 
 Console.WriteLine("Hello World of C#");
 
-AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
+#region ado.net CRUD
+//AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
+
 //adoDotNetExample.Read();
 //adoDotNetExample.Edit(id:3 ) ;
 //adoDotNetExample.Edit(id:12) ;
-//oDotNetExample.Create(title: "The girl", author: "By NNA", content: "HaHa");
-adoDotNetExample.Update(id: 5, title: "hay", author: "me", content: "hello");
+//adoDotNetExample.Create(title: "The girl", author: "By NNA", content: "HaHa");
+//adoDotNetExample.Update(id: 5, title: "hay", author: "me", content: "hello");
+//adoDotNetExample.Delete(id: 5);
+#endregion 
+
+#region DapperExample
+DapperExample dapperExample = new DapperExample();
+//dapperExample.Read();
+//dapperExample.Edit(6);
+//dapperExample.Edit(55);
+//dapperExample.Create(title: "The girl", author: "By NNA", content: "HaHa");
+//dapperExample.Update(title: "The Boy", author: "By NNA", content: "HaHa", id: 12);
+dapperExample.Delete(id: 12);
+#endregion
+
 Console.ReadLine();
