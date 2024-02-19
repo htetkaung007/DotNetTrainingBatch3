@@ -11,4 +11,4 @@ https://www.javatpoint.com/ado-net-tutorial
 # in  there are three way connect to data base  --> 
 ado.net ,
 dapper (ORM) #another call micro-orm, 
-efcore
+efcore (code first ,database first) ---> use database first 
